@@ -8,17 +8,17 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: yu-iskw/action-sqlfluff@v3
+      - uses: yu-iskw/action-sqlfluff@v3.3.2
         id: lint-sql
         with:
           github_token: ${{ secrets.github_token }}
           reporter: github-pr-review
           sqlfluff_version: "1.1.0"
-          sqlfluff_command: "lint" # Or "fix"
+          sqlfluff_command: "fix" # Or "lint"
           config: "${{ github.workspace }}/.sqlfluff"
-          paths: '${{ github.workspace }}/models'
+          paths: '${{ github.workspace }}'
       - name: 'Show outputs (Optional)'
         shell: bash
         run: |
-          echo '${{ steps.lint-sql.outputs.sqlfluff-results }}' | jq -r '.'
-          echo '${{ steps.lint-sql.outputs.sqlfluff-results-rdjson }}' | jq -r '.'
+          echo '${{ steps.fix-sql.outputs.sqlfluff-results }}' | jq -r '.'
+          echo '${{ steps.fix-sql.outputs.sqlfluff-results-rdjson }}' | jq -r '.'
