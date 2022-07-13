@@ -1,7 +1,7 @@
 
 name: sqlfluff with reviewdog
 on:
-  pull_request:
+  push:
 jobs:
   test-check:
     name: runner / sqlfluff (github-check)
