@@ -1,5 +1,5 @@
 name: sqlfluff with reviewdog
-on: push
+on: [push]
 jobs:
   test-check:
     name: runner / sqlfluff (github-check)
