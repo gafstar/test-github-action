@@ -1,6 +1,7 @@
 name: sqlfluff with reviewdog
 on:
   pull_request:
+  push:
 jobs:
   test-check:
     name: runner / sqlfluff (github-check)
@@ -18,7 +19,7 @@ jobs:
           paths: '${{ github.workspace }}/models'
       - name: 'Show outputs (Optional)'
         run: |
-          - name: Run sqlfluff with reviewdog
+          - name: Run sqlfluff with reviewdog testing
            uses: yu-iskw/action-sqlfluff@v3.3.2
 
 
